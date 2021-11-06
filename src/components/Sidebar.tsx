@@ -1,12 +1,26 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 
 const Sidebar = () => {
   return (
     <div className="border-r">
-      <div className="flex flex-col items-center space-y-0.5 mt-3">
-        <Link to="/workouts">Workouts</Link>
-        <Link to="/exercises">Exercises</Link>
+      <div className="flex flex-col mx-5 mt-3">
+        <NavLink
+          to="/workouts"
+          className={(isActive) =>
+            !isActive ? "bg-red-200 py-1 px-3" : "py-1 px-3"
+          }
+        >
+          Workouts
+        </NavLink>
+        <NavLink
+          to="/exercises"
+          className={(isActive) =>
+            !isActive ? "bg-red-200 py-1 px-3" : "py-1 px-3"
+          }
+        >
+          Exercises
+        </NavLink>
       </div>
     </div>
   );

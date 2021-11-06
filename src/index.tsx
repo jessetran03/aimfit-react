@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import registerIcons from './utilities/registerIcons';
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+registerIcons();
 
 ReactDOM.render(
   <React.StrictMode>

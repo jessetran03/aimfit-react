@@ -1,15 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PlusIcon } from "../utilities/icons";
+import { PlusIcon } from "../utilities/icons"
 import DATA from "../STORE";
 
-const Exercises = () => {
-  const [exercises, setExercises] = useState(DATA.exercises);
+const WorkoutPage = () => {
+  const [exercises, setExercises] = useState(DATA.pushWorkoutExercises);
   return (
+    <>
+    <div>Individual Workout Page</div>
     <div className="flex flex-wrap">
       {exercises.map((exercise) => (
         <Link
-          to={`/exercises/${exercise.id}`}
+          to={`/workouts/1/${exercise.id}`}
           key={exercise.id}
           className="w-52 h-24 border-2 p-5 text-2xl flex justify-center items-center m-3"
         >
@@ -25,7 +27,8 @@ const Exercises = () => {
         </div>
       </a>
     </div>
+    </>
   );
 };
 
-export default Exercises;
+export default WorkoutPage;

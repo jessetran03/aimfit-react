@@ -39,6 +39,24 @@ const DATA = {
       muscle: "Back",
     },
   ],
+
+  pushWorkoutExercises: [
+    {
+      id: 1,
+      name: "Bench Press",
+      muscle: "Chest",
+    },
+    {
+      id: 2,
+      name: "Incline Bench Press",
+      muscle: "Chest",
+    },
+    {
+      id: 3,
+      name: "Chest Flye",
+      muscle: "Chest",
+    },
+  ],
 };
 
 export default DATA;
