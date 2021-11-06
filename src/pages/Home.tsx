@@ -1,7 +1,5 @@
-import DATA from "../STORE";
-
 const Home = () => {
-  return <div className="">Hello, World</div>;
+  return <div className="">Aim to be Fit</div>;
 };
 
 export default Home;

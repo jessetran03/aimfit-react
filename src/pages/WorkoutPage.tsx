@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PlusIcon } from "../utilities/icons";
+import { PlusIcon, RightIcon } from "../utils/icons";
 import DATA from "../STORE";
 
 const WorkoutPage = () => {
-  const [exercises, setExercises] = useState(DATA.pushWorkoutExercises);
+  const [exercises] = useState(DATA.pushWorkoutExercises);
   return (
     <>
-      <div>Workouts &gt; Push Workout</div>
+      <div className="font-semibold">Workouts <RightIcon /> Push Workout</div>
       <div className="flex flex-wrap">
         {exercises.map((exercise) => (
           <Link
@@ -19,7 +19,7 @@ const WorkoutPage = () => {
           </Link>
         ))}
         <a
-          href="3"
+          href="#"
           className="w-52 h-24 border-2 p-5 text-sm font-bold flex justify-center items-center m-3"
         >
           <div className="border p-2 border border-gray-500 rounded-xl">

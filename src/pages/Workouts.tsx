@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { PlusIcon } from "../utilities/icons";
+import { PlusIcon } from "../utils/icons";
 import { useQuery } from "@apollo/client";
 import { workoutsQuery } from "../apollo/client";
 import DATA from "../STORE";
 
 const Workouts = () => {
-  const [workouts, setWorkouts] = useState(DATA.workouts);
+  const [workouts] = useState(DATA.workouts);
   const { data } = useQuery(workoutsQuery);
   console.log({ workouts: data });
   return (

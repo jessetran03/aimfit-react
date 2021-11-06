@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
-import { PlusIcon } from "../utilities/icons";
+import { PlusIcon } from "../utils/icons";
 import { useQuery } from "@apollo/client";
 import { exercisesQuery } from "../apollo/client";
+
+interface Exercise {
+  id: number;
+  name: string;
+  muscle: string;
+}
 
 const Exercises = () => {
   const { loading, error, data } = useQuery(exercisesQuery);
@@ -11,11 +17,11 @@ const Exercises = () => {
     <>
       <div>Exercise List Page</div>
       <div className="flex flex-wrap">
-        {data.exercises.map((exercise: any) => (
+        {data.exercises.map((exercise: Exercise) => (
           <Link
             to={`/exercises/${exercise.id}`}
             key={exercise.id}
-            className="w-52 h-24 border-2 p-5 text-2xl flex justify-center items-center m-3"
+            className="w-52 h-24 border-2 p-5 text-lg flex justify-center items-center m-3"
           >
             {exercise.name}
           </Link>

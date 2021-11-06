@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { SettingsIcon } from "../utilities/icons";
+import { SettingsIcon } from "../utils/icons";
 
-const Nav = ({ className }: any) => {
+const Nav = () => {
   const auth = true;
   if (auth) {
     return (
-      <nav className={`${className} flex items-center justify-end bg-gray-100`}>
+      <nav className={`flex items-center justify-end bg-gray-100`}>
         <div className="space-x-5 px-8 flex">
           <Link to="/workouts">Workouts</Link>
           <Link to="/exercises">Exercises</Link>
@@ -17,7 +17,7 @@ const Nav = ({ className }: any) => {
     );
   }
   return (
-    <nav className={`${className} flex items-center justify-end`}>
+    <nav className={`flex items-center justify-end`}>
       <div className="space-x-5 px-5">
         <Link to="/register">Sign Up</Link>
         <Link to="/login">Login</Link>

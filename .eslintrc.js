@@ -13,4 +13,9 @@ module.exports = {
     "@typescript-eslint/explicit-module-boundary-types": "off",
     semi: [1, "always"],
   },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };
