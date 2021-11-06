@@ -3,11 +3,6 @@ import { Outlet } from "react-router-dom";
 import Nav from "./Nav";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
-import { Link } from "react-router-dom";
-
-interface MainContentAreaProps {
-  className: string;
-}
 
 const Layout: FC = () => {
   return (
