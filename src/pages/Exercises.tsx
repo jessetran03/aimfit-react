@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { PlusIcon } from "../utils/icons";
 import { useQuery } from "@apollo/client";
-import { exercisesQuery } from "../apollo/client";
+import { ExercisesQuery } from "../apollo";
 
 interface Exercise {
   id: number;
@@ -10,7 +10,7 @@ interface Exercise {
 }
 
 const Exercises = () => {
-  const { loading, error, data } = useQuery(exercisesQuery);
+  const { loading, error, data } = useQuery(ExercisesQuery);
   if (loading) return <div>Loading</div>;
   if (error) return <div>Error!</div>;
   return (
