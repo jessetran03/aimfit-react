@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { PlusIcon } from "../utils/icons";
-import { useQuery } from "@apollo/client";
-import { ExercisesQuery } from "../apollo";
+import { Link } from 'react-router-dom';
+import { PlusIcon } from '../utils/icons';
+import { useQuery } from '@apollo/client';
+import { ExercisesQuery } from '../apollo';
 
 interface Exercise {
   id: number;

@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
-import { PlusIcon, RightIcon } from "../utils/icons";
-import { useQuery } from "@apollo/client";
-import { WorkoutExercisesQuery } from "../apollo";
+import { Link } from 'react-router-dom';
+import { PlusIcon, RightIcon } from '../utils/icons';
+import { useQuery } from '@apollo/client';
+import { WorkoutExercisesQuery } from '../apollo';
 
 interface WorkoutExercise {
   id: number;
@@ -23,7 +23,9 @@ const WorkoutPage = () => {
   console.log(data);
   return (
     <>
-      <div className="font-semibold">Workouts <RightIcon /> Push Workout</div>
+      <div className="font-semibold">
+        Workouts <RightIcon /> Push Workout
+      </div>
       <div className="flex flex-wrap">
         {data.workoutExercises.map((workoutExercise: WorkoutExercise) => (
           <Link

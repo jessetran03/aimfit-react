@@ -1,10 +1,10 @@
-import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Workouts from "./pages/Workouts";
-import WorkoutPage from "./pages/WorkoutPage";
-import Exercises from "./pages/Exercises";
-import NotFound from "./pages/NotFound";
-import Layout from "./components/Layout";
+import { Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Workouts from './pages/Workouts';
+import WorkoutPage from './pages/WorkoutPage';
+import Exercises from './pages/Exercises';
+import NotFound from './pages/NotFound';
+import Layout from './components/Layout';
 
 const App = () => {
   return (
