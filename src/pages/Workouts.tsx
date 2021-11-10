@@ -33,7 +33,6 @@ const Workouts = () => {
 
   const [deleteWorkout] = useMutation(DeleteWorkoutMutation, {
     refetchQueries: [WorkoutsQuery],
-    onCompleted: setClosed,
   });
 
   if (loading) return <div>Loading</div>;

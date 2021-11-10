@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { Outlet } from "react-router-dom";
-import Nav from "./Nav";
-import Header from "./Header";
-import Sidebar from "./Sidebar";
+import { FC } from 'react';
+import { Outlet } from 'react-router-dom';
+import Nav from './Nav';
+import Header from './Header';
+import Sidebar from './Sidebar';
 
 const Layout: FC = () => {
   return (

@@ -8,7 +8,11 @@ interface INewWorkoutFormProps {
   setTitle: (title: string) => void;
 }
 
-const NewWorkoutForm = ({ onSubmit, setDay, setTitle }: INewWorkoutFormProps) => {
+const NewWorkoutForm = ({
+  onSubmit,
+  setDay,
+  setTitle,
+}: INewWorkoutFormProps) => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
@@ -21,9 +25,7 @@ const NewWorkoutForm = ({ onSubmit, setDay, setTitle }: INewWorkoutFormProps) =>
         required
         onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
       />
-      <Input
-        onChange={(e) => setDay((e.target as HTMLInputElement).value)}
-      />
+      <Input onChange={(e) => setDay((e.target as HTMLInputElement).value)} />
       <Button type="submit">Submit</Button>
     </form>
   );

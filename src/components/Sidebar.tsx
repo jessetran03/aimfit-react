@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 // import { Link, NavLink, useParams } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
@@ -9,7 +9,7 @@ const Sidebar = () => {
         <NavLink
           to="/workouts"
           className={(isActive) =>
-            !isActive ? "bg-red-200 py-1 px-3" : "py-1 px-3"
+            !isActive ? 'bg-red-200 py-1 px-3' : 'py-1 px-3'
           }
         >
           Workouts
@@ -17,7 +17,7 @@ const Sidebar = () => {
         <NavLink
           to="/exercises"
           className={(isActive) =>
-            !isActive ? "bg-red-200 py-1 px-3" : "py-1 px-3"
+            !isActive ? 'bg-red-200 py-1 px-3' : 'py-1 px-3'
           }
         >
           Exercises
