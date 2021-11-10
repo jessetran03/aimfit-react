@@ -1,23 +1,20 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IProps {
   className?: string;
 }
 
+export const CloseIcon = ({ className }: IProps) => {
+  return <FontAwesomeIcon className={className} icon="times" />;
+};
 export const RightIcon = ({ className }: IProps) => {
-  return (
-    <FontAwesomeIcon className={className} icon='chevron-right' />
-  );
+  return <FontAwesomeIcon className={className} icon="chevron-right" />;
 };
 
 export const PlusIcon = ({ className }: IProps) => {
-  return (
-    <FontAwesomeIcon className={className} icon='plus-circle' />
-  );
+  return <FontAwesomeIcon className={className} icon="plus-circle" />;
 };
 
 export const SettingsIcon = ({ className }: IProps) => {
-  return (
-    <FontAwesomeIcon className={className} icon='cog' />
-  );
+  return <FontAwesomeIcon className={className} icon="cog" />;
 };

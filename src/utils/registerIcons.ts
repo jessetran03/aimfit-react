@@ -9,6 +9,7 @@ import {
   faPlusCircle,
   faSpinner,
   faStar,
+  faTimes,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { faStar as farStar } from "@fortawesome/free-regular-svg-icons";
@@ -25,6 +26,7 @@ export default function registerIcons() {
     faSpinner,
     faStar,
     farStar,
+    faTimes,
     faUser
   );
 }

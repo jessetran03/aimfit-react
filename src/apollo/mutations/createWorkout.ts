@@ -1,6 +1,6 @@
 import { gql } from '@apollo/client';
 
-export const createWorkout = gql`
+export const CreateWorkoutMutation = gql`
   mutation NewWorkout($input: CreateWorkoutInput) {
     newWorkout(input: $input) {
       id
