@@ -4,6 +4,9 @@ interface IProps {
   className?: string;
 }
 
+export const BarsIcon = ({ className }: IProps) => {
+  return <FontAwesomeIcon className={className} icon="bars" />;
+};
 export const CloseIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="times" />;
 };

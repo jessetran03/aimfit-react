@@ -1,6 +1,7 @@
 import { FormEvent } from 'react';
 import Input from './Input';
 import Button from './Button';
+import Select from './Select';
 
 interface INewWorkoutFormProps {
   onSubmit: () => void;
@@ -25,7 +26,17 @@ const NewWorkoutForm = ({
         required
         onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
       />
-      <Input onChange={(e) => setDay((e.target as HTMLInputElement).value)} />
+      <Select onChange={(e) => setDay((e.target as HTMLInputElement).value)}>
+        <>
+          <option value="Sunday">Sunday</option>
+          <option value="Monday">Monday</option>
+          <option value="Tuesday">Tuesday</option>
+          <option value="Wednesday">Wednesday</option>
+          <option value="Thursday">Thursday</option>
+          <option value="Friday">Friday</option>
+          <option value="Saturday">Saturday</option>
+        </>
+      </Select>
       <Button type="submit">Submit</Button>
     </form>
   );

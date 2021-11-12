@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { SettingsIcon } from '../utils/icons';
+import { SettingsIcon, BarsIcon } from '../utils/icons';
 
 const Nav = () => {
   const auth = true;
   if (auth) {
     return (
-      <nav className={`flex items-center justify-end bg-gray-100`}>
-        <div className="space-x-5 px-8 flex">
+      <nav className="flex items-center justify-end bg-gray-100">
+        <div className="hidden space-x-5 px-8 sm:flex">
           <Link to="/workouts">Workouts</Link>
           <Link to="/exercises">Exercises</Link>
           <a href="#">
@@ -15,6 +15,10 @@ const Nav = () => {
           </a>
           <a href="#">Sign Out</a>
         </div>
+        {/* Mobile */}
+        <Link to="/workouts" className="flex sm:hidden px-8">
+          <BarsIcon className="text-3xl" />
+        </Link>
       </nav>
     );
   }

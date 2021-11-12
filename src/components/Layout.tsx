@@ -8,13 +8,13 @@ const Layout: FC = () => {
   return (
     <div className="grid-top-bottom">
       <div className="bg-gray-100 shadow">
-        <div className="grid-left-right h-full">
+        <div className="grid-left-right h-full top">
           <Header />
           <Nav />
         </div>
       </div>
       <div className="grid-left-right">
-        <Sidebar />
+        <Sidebar classNames="hidden sm:block" />
         <MainContentArea />
       </div>
     </div>

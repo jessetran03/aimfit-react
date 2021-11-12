@@ -2,9 +2,13 @@ import React from 'react';
 // import { Link, NavLink, useParams } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 
-const Sidebar = () => {
+interface SidebarProps {
+  classNames?: string;
+}
+
+const Sidebar = ({ classNames }: SidebarProps) => {
   return (
-    <div className="border-r">
+    <div className={`${classNames} border-r`} >
       <div className="flex flex-col mx-5 mt-3">
         <NavLink
           to="/workouts"

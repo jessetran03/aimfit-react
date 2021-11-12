@@ -28,8 +28,17 @@ a:hover {
 }
 .grid-left-right {
   display: grid;
-  grid-template-columns: 180px auto;
+  grid-template-columns: auto;
   max-width: 1536px;
   margin: 0 auto;
   width: 100vw;
+}
+.grid-left-right.top {
+  grid-template-columns: 180px auto;
+}
+
+@media(min-width: 640px) {
+  .grid-left-right {
+    grid-template-columns: 180px auto;
+  }
 }
