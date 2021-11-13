@@ -10,12 +10,11 @@ import ExerciseLogTable from '../components/ExerciseLogTable';
 
 const ExerciseLog = () => {
   const { exerciseId } = useParams();
-  // const { loading, error, data } = useQuery(ExerciseLogQuery, {
-  //   variables: {
-  //     exerciseId
-  //   }
-  // });
-  const { loading, error, data } = useQuery(ExerciseLogQuery);
+  const { loading, error, data } = useQuery(ExerciseLogQuery, {
+    variables: {
+      exerciseId,
+    },
+  });
   const [setCount, setSetCount] = useState<number>();
   const [repCount, setRepCount] = useState<number>();
   const [weightCount, setWeightCount] = useState<number>();
@@ -32,6 +31,7 @@ const ExerciseLog = () => {
   console.log(data);
   if (loading) return <div>Loading</div>;
   if (error) return <div>Error!</div>;
+  if (!data) return null;
   return (
     <>
       <div className="font-semibold">
@@ -39,10 +39,10 @@ const ExerciseLog = () => {
         <RightIcon />
         <Link to="/workouts/1"> Push Workout </Link>
         <RightIcon />
-        <Link to="/exercises/1"> Barbell Bench Press </Link>
+        <Link to={`/exercises/${exerciseId}`}> {data.exercise.name} </Link>
       </div>
       <div>
-        <ExerciseLogTable data={data.exerciseLog} />
+        <ExerciseLogTable exerciseName={data.exercise.name} data={data.exerciseLog} />
       </div>
       <div className="flex flex-wrap">
         <button

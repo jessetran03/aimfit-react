@@ -55,7 +55,7 @@ const WorkoutPage = () => {
         <Link to="/workouts">Workouts </Link>
         <RightIcon /> {data?.workout.title}
       </div>
-      <div className="flex flex-wrap">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {workoutExercises.map((workoutExercise: WorkoutExercise) => (
           <Link
             to={`/exercises/${workoutExercise.exercise.id}`}

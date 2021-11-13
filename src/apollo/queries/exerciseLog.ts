@@ -1,8 +1,12 @@
 import { gql } from '@apollo/client';
 
 export const ExerciseLogQuery = gql`
-  query {
-    exerciseLog {
+  query ($exerciseId: ID!) {
+    exercise(id: $exerciseId) {
+      id
+      name
+    }
+    exerciseLog(exerciseId: $exerciseId) {
       id
       setCount
       repCount

@@ -1,4 +1,5 @@
 // Queries
+export { ExerciseQuery} from './queries/exercise';
 export { ExerciseLogQuery } from './queries/exerciseLog';
 export { ExercisesQuery } from './queries/exercises';
 export { WorkoutExercisesQuery } from './queries/workoutExercises';

@@ -11,9 +11,13 @@ interface ILogEntryProps {
 
 interface IExerciseLogTableProps {
   data: [ILogEntryProps];
+  exerciseName: string;
 }
 
-export const ExerciseLogTable = ({ data }: IExerciseLogTableProps) => {
+export const ExerciseLogTable = ({
+  data,
+  exerciseName,
+}: IExerciseLogTableProps) => {
   const newData = data.map((entry: ILogEntryProps) =>
     Object.assign({}, entry, { selected: false }),
   );
@@ -38,7 +42,7 @@ export const ExerciseLogTable = ({ data }: IExerciseLogTableProps) => {
   ];
   return (
     <MaterialTable
-      title="Exercise Log"
+      title={`Exercise Log for ${exerciseName}`}
       data={newData}
       columns={columns}
       options={{ search: true }}
