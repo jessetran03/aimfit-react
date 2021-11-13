@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SettingsIcon, BarsIcon } from '../utils/icons';
+import Modal from '../components/Modal';
+import useModal from '../hooks/useModal';
 
 const Nav = () => {
+  const { isOpen, setOpen, setClosed } = useModal();
   const auth = true;
   if (auth) {
     return (
@@ -16,9 +19,17 @@ const Nav = () => {
           <a href="#">Sign Out</a>
         </div>
         {/* Mobile */}
-        <Link to="/workouts" className="flex sm:hidden px-8">
-          <BarsIcon className="text-3xl" />
-        </Link>
+        <div className="flex sm:hidden px-0">
+          <button className="flex sm:hidden py-3 px-4" onClick={() => setOpen()}>
+            <BarsIcon className="text-3xl" />
+          </button>
+          <Modal isOpen={isOpen} setClosed={setClosed}>
+            <div className="flex flex-col">
+              <Link to="/workouts">Workouts</Link>
+              <Link to="/exercises">Exercises</Link>
+            </div>
+          </Modal>
+        </div>
       </nav>
     );
   }

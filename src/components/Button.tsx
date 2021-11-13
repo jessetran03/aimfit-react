@@ -10,7 +10,7 @@ interface IButtonProps {
 const Button = ({ children, className, type, onClick }: IButtonProps) => {
   return (
     <button
-      className={`${className} border border-black rounded`}
+      className={`${className} border border-black rounded py-1 px-2 font-semibold`}
       type={type}
       onClick={onClick}
     >

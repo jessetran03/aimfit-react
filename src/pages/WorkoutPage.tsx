@@ -18,18 +18,20 @@ interface Exercise {
 const WorkoutPage = () => {
   // const [exercises] = useState(DATA.pushWorkoutExercises);
   const { loading, error, data } = useQuery(WorkoutExercisesQuery);
+  console.log(data);
   if (loading) return <div>Loading</div>;
   if (error) return <div>Error!</div>;
   console.log(data);
   return (
     <>
       <div className="font-semibold">
-        Workouts <RightIcon /> Push Workout
+        <Link to="/workouts">Workouts </Link>
+        <RightIcon /> Push Workout
       </div>
       <div className="flex flex-wrap">
         {data.workoutExercises.map((workoutExercise: WorkoutExercise) => (
           <Link
-            to={`/workouts/1/${workoutExercise.exercise.id}`}
+            to={`/exercises/${workoutExercise.exercise.id}`}
             key={workoutExercise.exercise.id}
             className="w-52 h-24 border-2 p-5 text-2xl flex justify-center items-center m-3"
           >

@@ -39,15 +39,16 @@ const Workouts = () => {
   if (error) return <div>Error!</div>;
   return (
     <>
-      <div>Workout List Page</div>
+      <div className="font-semibold">Workouts</div>
       <div className="flex flex-wrap">
         {data.workouts.map((workout: Workout) => (
           <Link
             to={`${workout.id}`}
             key={workout.id}
-            className="w-52 h-24 border-2 p-5 text-2xl flex flex-col justify-center items-center m-3"
+            className="w-52 h-32 rounded-lg border-2 p-5 text-2xl flex flex-col justify-center items-center m-3"
           >
-            {workout.title}
+            <h2>{workout.title}</h2>
+            <h3 className="text-base">{workout.day}</h3>
             <button
               className="text-sm text-white border mt-2 rounded-xl p-1 bg-gray-400"
               onClick={(e) => {

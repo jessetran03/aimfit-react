@@ -4,7 +4,10 @@ export const WorkoutExercisesQuery = gql`
   query {
     workoutExercises {
       id
-      workoutId
+      workout {
+        title
+        day
+      }
       exercise {
         id
         name

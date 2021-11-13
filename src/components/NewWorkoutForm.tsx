@@ -20,6 +20,7 @@ const NewWorkoutForm = ({
   };
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
+      <h2 className="text-lg mb-2 text-center">Add Workout</h2>
       <Input
         autoFocus
         placeholder="Workout Name"
@@ -37,7 +38,7 @@ const NewWorkoutForm = ({
           <option value="Saturday">Saturday</option>
         </>
       </Select>
-      <Button type="submit">Submit</Button>
+      <Button className="mx-auto"type="submit">Submit</Button>
     </form>
   );
 };
