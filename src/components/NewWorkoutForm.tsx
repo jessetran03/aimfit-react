@@ -26,7 +26,7 @@ const NewWorkoutForm = ({
         required
         onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
       />
-      <Select onChange={(e) => setDay((e.target as HTMLInputElement).value)}>
+      <Select onChange={(e) => setDay((e.target as HTMLSelectElement).value)}>
         <>
           <option value="Sunday">Sunday</option>
           <option value="Monday">Monday</option>
