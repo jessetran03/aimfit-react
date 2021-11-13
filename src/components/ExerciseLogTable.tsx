@@ -1,5 +1,5 @@
 
-import { forwardRef } from 'react';
+// import { forwardRef } from 'react';
 import MaterialTable from 'material-table';
 // import { AddBox, ArrowDownward } from '@material-ui/icons';
 // import AddBox from '@material-ui/icons/AddBox';
@@ -19,12 +19,19 @@ import MaterialTable from 'material-table';
 // import Search from '@material-ui/icons/Search';
 // import ViewColumn from '@material-ui/icons/ViewColumn';
 
+interface ILogEntryProps {
+  setCount: number,
+  repCount: number,
+  weightCount: number,
+  dateLogged: string,
+}
+
 interface IExerciseLogTableProps {
-  data: any;
+  data: [ILogEntryProps]
 }
 
 export const ExerciseLogTable = ({ data }: IExerciseLogTableProps) => {
-  const newData = data.exerciseLog.map((entry: any) =>
+  const newData = data.map((entry: ILogEntryProps) =>
     Object.assign({}, entry, { selected: false }),
   );
 

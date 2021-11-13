@@ -44,7 +44,7 @@ const ExerciseLog = () => {
         <Link to="/exercises/1"> Barbell Bench Press </Link>
       </div>
       <div>
-        <ExerciseLogTable data={data} />
+        <ExerciseLogTable data={data.exerciseLog} />
       </div>
       <div className="flex flex-wrap">
         <button
