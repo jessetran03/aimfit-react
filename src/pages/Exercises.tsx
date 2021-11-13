@@ -15,7 +15,9 @@ const Exercises = () => {
   if (error) return <div>Error!</div>;
   return (
     <>
-      <div>Exercise List Page</div>
+      <div className="font-semibold">
+        <Link to="/exercises">Exercises</Link>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {data.exercises.map((exercise: Exercise) => (
           <Link

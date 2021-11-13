@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { PlusIcon, RightIcon } from '../utils/icons';
+// import { Link, useParams } from 'react-router-dom';
+// import { PlusIcon, RightIcon } from '../utils/icons';
+import { useParams } from 'react-router-dom';
+import { PlusIcon, LeftArrowIcon } from '../utils/icons';
 import { useQuery, useMutation } from '@apollo/client';
 import { ExerciseLogQuery, AddLogEntryMutation } from '../apollo';
 import Modal from '../components/Modal';
@@ -28,21 +30,26 @@ const ExerciseLog = () => {
     onCompleted: setClosed,
   });
 
-  console.log(data);
   if (loading) return <div>Loading</div>;
   if (error) return <div>Error!</div>;
   if (!data) return null;
   return (
     <>
       <div className="font-semibold">
-        <Link to="/workouts">Workouts </Link>
+        {/* <Link to="/workouts">Workouts </Link>
         <RightIcon />
         <Link to="/workouts/1"> Push Workout </Link>
         <RightIcon />
-        <Link to={`/exercises/${exerciseId}`}> {data.exercise.name} </Link>
+        <Link to={`/exercises/${exerciseId}`}> {data.exercise.name} </Link> */}
+        <button className="font-semibold" onClick={() => window.history.back()}>
+          <LeftArrowIcon /> Go Back
+        </button>
       </div>
       <div>
-        <ExerciseLogTable exerciseName={data.exercise.name} data={data.exerciseLog} />
+        <ExerciseLogTable
+          exerciseName={data.exercise.name}
+          data={data.exerciseLog}
+        />
       </div>
       <div className="flex flex-wrap">
         <button

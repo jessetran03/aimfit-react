@@ -1,4 +1,3 @@
-// import { forwardRef } from 'react';
 import MaterialTable from 'material-table';
 // import Moment from 'react-moment';
 
@@ -46,7 +45,6 @@ export const ExerciseLogTable = ({
       data={newData}
       columns={columns}
       options={{ search: true }}
-      // icons={tableIcons}
     />
   );
 };

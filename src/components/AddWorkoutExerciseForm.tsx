@@ -25,7 +25,6 @@ const AddWorkoutExerciseForm = ({
     e.preventDefault();
     onSubmit();
   };
-  console.log({ data });
   if (!data) return null;
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
