@@ -1,35 +1,62 @@
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import { PlusIcon, RightIcon } from '../utils/icons';
-import { useQuery } from '@apollo/client';
-import { WorkoutExercisesQuery } from '../apollo';
+import { useQuery, useMutation } from '@apollo/client';
+import { WorkoutExercisesQuery, AddWorkoutExerciseMutation } from '../apollo';
+import Modal from '../components/Modal';
+import AddWorkoutExerciseForm from '../components/AddWorkoutExerciseForm';
+import useModal from '../hooks/useModal';
 
 interface WorkoutExercise {
   id: number;
-  workout_id: number;
+  workout: Workout;
   exercise: Exercise;
 }
 
+interface Workout {
+  id: string;
+  day: string;
+  title: string;
+}
+
 interface Exercise {
-  id: number;
+  id: string;
   name: string;
   muscle: string;
 }
 
+// CLEAN UP FILTER/TYPES
+
 const WorkoutPage = () => {
-  // const [exercises] = useState(DATA.pushWorkoutExercises);
-  const { loading, error, data } = useQuery(WorkoutExercisesQuery);
-  console.log(data);
+  const [exerciseId, setExerciseId] = useState<string>();
+  const { isOpen, setOpen, setClosed } = useModal();
+  const { workoutId } = useParams();
+  const { loading, error, data } = useQuery(WorkoutExercisesQuery, {
+    variables: {
+      id: workoutId,
+    },
+  });
+  const [addWorkoutExercise] = useMutation(AddWorkoutExerciseMutation, {
+    variables: {
+      input: { workoutId, exerciseId },
+    },
+    refetchQueries: [WorkoutExercisesQuery],
+    onCompleted: setClosed,
+  });
+  const workoutExercises = data?.workoutExercises.filter(
+    (workoutExercise: WorkoutExercise) =>
+      workoutExercise.workout.id === workoutId,
+  );
   if (loading) return <div>Loading</div>;
   if (error) return <div>Error!</div>;
-  console.log(data);
   return (
     <>
       <div className="font-semibold">
         <Link to="/workouts">Workouts </Link>
-        <RightIcon /> Push Workout
+        <RightIcon /> {data?.workout.title}
       </div>
       <div className="flex flex-wrap">
-        {data.workoutExercises.map((workoutExercise: WorkoutExercise) => (
+        {workoutExercises.map((workoutExercise: WorkoutExercise) => (
           <Link
             to={`/exercises/${workoutExercise.exercise.id}`}
             key={workoutExercise.exercise.id}
@@ -38,14 +65,20 @@ const WorkoutPage = () => {
             {workoutExercise.exercise.name}
           </Link>
         ))}
-        <a
-          href="#"
+        <button
           className="w-52 h-24 border-2 p-5 text-sm font-bold flex justify-center items-center m-3"
+          onClick={() => setOpen()}
         >
           <div className="border p-2 border border-gray-500 rounded-xl">
             ADD EXERCISE <PlusIcon className="text-gray-500" />
           </div>
-        </a>
+        </button>
+        <Modal isOpen={isOpen} setClosed={setClosed}>
+          <AddWorkoutExerciseForm
+            onSubmit={() => addWorkoutExercise()}
+            setExerciseId={setExerciseId}
+          />
+        </Modal>
       </div>
     </>
   );

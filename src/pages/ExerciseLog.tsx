@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { PlusIcon, RightIcon } from '../utils/icons';
 import { useQuery, useMutation } from '@apollo/client';
 import { ExerciseLogQuery, AddLogEntryMutation } from '../apollo';
@@ -9,9 +9,7 @@ import LogEntryForm from '../components/LogEntryForm';
 import ExerciseLogTable from '../components/ExerciseLogTable';
 
 const ExerciseLog = () => {
-  // const [exercises] = useState(DATA.pushWorkoutExercises);
-  const path = window?.location.pathname;
-  const exerciseId = path.split('/')[2];
+  const { exerciseId } = useParams();
   // const { loading, error, data } = useQuery(ExerciseLogQuery, {
   //   variables: {
   //     exerciseId
@@ -39,7 +37,7 @@ const ExerciseLog = () => {
       <div className="font-semibold">
         <Link to="/workouts">Workouts </Link>
         <RightIcon />
-        <Link to="/workouts/1"> Push Workouts </Link>
+        <Link to="/workouts/1"> Push Workout </Link>
         <RightIcon />
         <Link to="/exercises/1"> Barbell Bench Press </Link>
       </div>

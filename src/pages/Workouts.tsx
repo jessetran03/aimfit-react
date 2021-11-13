@@ -40,12 +40,12 @@ const Workouts = () => {
   return (
     <>
       <div className="font-semibold">Workouts</div>
-      <div className="flex flex-wrap">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.workouts.map((workout: Workout) => (
           <Link
             to={`${workout.id}`}
             key={workout.id}
-            className="w-52 h-32 rounded-lg border-2 p-5 text-2xl flex flex-col justify-center items-center m-3"
+            className="h-32 rounded-lg border-2 p-5 text-2xl flex flex-col justify-center items-center m-3"
           >
             <h2>{workout.title}</h2>
             <h3 className="text-base">{workout.day}</h3>
@@ -61,7 +61,7 @@ const Workouts = () => {
           </Link>
         ))}
         <button
-          className="w-52 h-24 border-2 p-5 text-sm font-bold flex justify-center items-center m-3"
+          className="h-32 border-2 p-5 text-sm font-bold flex justify-center items-center m-3"
           onClick={(e) => {
             e.preventDefault();
             setOpen();
