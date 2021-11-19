@@ -26,7 +26,6 @@ const AddWorkoutExerciseForm = ({
     onSubmit();
   };
   if (!data) return null;
-  console.log(data);
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
       <h2 className="text-lg mb-2 text-center">Add Exercise to Workout</h2>
