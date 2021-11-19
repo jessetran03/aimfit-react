@@ -1,5 +1,5 @@
 import MaterialTable from 'material-table';
-// import Moment from 'react-moment';
+import dayjs from 'dayjs';
 
 interface ILogEntryProps {
   setCount: number;
@@ -37,6 +37,8 @@ export const ExerciseLogTable = ({
     {
       title: 'Date Logged',
       field: 'dateLogged',
+      render: (rowData: ILogEntryProps) =>
+        dayjs(Number(rowData.dateLogged)).format('MM/DD/YYYY'),
     },
   ];
   return (

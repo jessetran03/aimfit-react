@@ -26,17 +26,20 @@ const AddWorkoutExerciseForm = ({
     onSubmit();
   };
   if (!data) return null;
+  console.log(data);
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
       <h2 className="text-lg mb-2 text-center">Add Exercise to Workout</h2>
       <Select
         onChange={(e) => setExerciseId((e.target as HTMLSelectElement).value)}
       >
-        {data.exercises.map((exercise: Exercise) => (
-          <option key={exercise.id} value={exercise.id}>
-            {exercise.name}
-          </option>
-        ))}
+        {data.exercises
+          // .sort((a: Exercise, b: Exercise) => (a.name > b.name ? -1 : 1))
+          .map((exercise: Exercise) => (
+            <option key={exercise.id} value={exercise.id}>
+              {exercise.name}
+            </option>
+          ))}
       </Select>
       <Button className="mx-auto" type="submit">
         Submit
