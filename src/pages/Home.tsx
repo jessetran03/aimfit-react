@@ -5,6 +5,7 @@ const Home = () => {
         Aim to be Fit
       </div>
       <div className="text-xl mt-5">Begin your journey.</div>
+      <div className="text-sm mt-8"><i>App still in development.</i></div>
     </div>
   );
 };
