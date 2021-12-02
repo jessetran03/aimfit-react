@@ -4,16 +4,19 @@ import Button from './Button';
 import Select from './Select';
 
 interface INewWorkoutFormProps {
+  day: string;
   onSubmit: () => void;
   setDay: (day: string) => void;
   setTitle: (title: string) => void;
 }
 
 const NewWorkoutForm = ({
+  day,
   onSubmit,
   setDay,
   setTitle,
 }: INewWorkoutFormProps) => {
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
@@ -27,7 +30,7 @@ const NewWorkoutForm = ({
         required
         onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
       />
-      <Select onChange={(e) => setDay((e.target as HTMLSelectElement).value)}>
+      <Select value={day} onChange={(e) => setDay((e.target as HTMLSelectElement).value)}>
         <>
           <option value="Sunday">Sunday</option>
           <option value="Monday">Monday</option>

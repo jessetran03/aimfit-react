@@ -20,8 +20,10 @@ interface Workout {
 const Workouts = () => {
   const { loading, error, data } = useQuery(WorkoutsQuery);
   const [title, setTitle] = useState<string>();
-  const [day, setDay] = useState<string>();
+  const [day, setDay] = useState<string>('Sunday');
   const { isOpen, setOpen, setClosed } = useModal();
+
+  console.log({ day });
 
   const [createWorkout] = useMutation(CreateWorkoutMutation, {
     variables: {
@@ -67,6 +69,7 @@ const Workouts = () => {
           onClick={(e) => {
             e.preventDefault();
             setOpen();
+            setDay('Sunday');
           }}
         >
           <div className="border p-2 border border-gray-500 rounded-xl">
@@ -78,6 +81,7 @@ const Workouts = () => {
             onSubmit={() => createWorkout()}
             setTitle={setTitle}
             setDay={setDay}
+            day={day}
           />
         </Modal>
       </div>
