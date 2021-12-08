@@ -46,7 +46,7 @@ export const ExerciseLogTable = ({
       title={`Exercise Log for ${exerciseName}`}
       data={newData}
       columns={columns}
-      options={{ search: true }}
+      options={{ search: false, sorting: false }}
     />
   );
 };

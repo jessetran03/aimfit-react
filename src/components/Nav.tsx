@@ -16,11 +16,16 @@ const Nav = () => {
           <a href="#">
             <SettingsIcon className="text-2xl text-gray-500" />
           </a>
-          <a href="#">Sign Out</a>
+          <a href="/" onClick={() => localStorage.clear()}>
+            Sign Out
+          </a>
         </div>
         {/* Mobile */}
         <div className="flex sm:hidden px-0">
-          <button className="flex sm:hidden py-3 px-4" onClick={() => setOpen()}>
+          <button
+            className="flex sm:hidden py-3 px-4"
+            onClick={() => setOpen()}
+          >
             <BarsIcon className="text-3xl" />
           </button>
           <Modal isOpen={isOpen} setClosed={setClosed}>

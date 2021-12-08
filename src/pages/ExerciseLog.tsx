@@ -35,7 +35,7 @@ const ExerciseLog = () => {
   if (!data) return null;
   return (
     <>
-      <div className="font-semibold">
+      <div className="font-semibold mb-2">
         {/* <Link to="/workouts">Workouts </Link>
         <RightIcon />
         <Link to="/workouts/1"> Push Workout </Link>

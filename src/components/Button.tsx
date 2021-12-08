@@ -3,14 +3,23 @@ import React from 'react';
 interface IButtonProps {
   children?: string;
   className?: string;
+  primary?: boolean;
   type?: 'button' | 'submit' | 'reset' | undefined;
   onClick?: (e: React.FormEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ children, className, type, onClick }: IButtonProps) => {
+const Button = ({
+  children,
+  className,
+  primary,
+  type,
+  onClick,
+}: IButtonProps) => {
   return (
     <button
-      className={`${className} border border-black rounded py-1 px-2 font-semibold`}
+      className={` text-white rounded-lg py-1 px-2 font-semibold ${
+        primary && 'bg-secondary'
+      } text-lg ${className}`}
       type={type}
       onClick={onClick}
     >
