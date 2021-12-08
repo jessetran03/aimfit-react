@@ -14,7 +14,7 @@ import Layout from './components/Layout';
 const App = () => {
   Axios.defaults.baseURL = API_BASE_URI;
   const [loggedIn, setLoggedIn] = useState(
-    Boolean(localStorage.getItem('token')),
+    Boolean(localStorage.getItem('authToken')),
   );
   if (!loggedIn) {
     return <Login setLoggedIn={setLoggedIn} />;
