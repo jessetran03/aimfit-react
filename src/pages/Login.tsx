@@ -8,11 +8,15 @@ interface ILoginProps {
 }
 
 const Login = ({ setLoggedIn }: ILoginProps) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState(null);
+  const [loginLoading, setLoginLoading] = useState<boolean>(false);
+  const [demoLoading, setDemoLoading] = useState<boolean>(false);
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setLoginLoading(true);
     axios
       .post('/login', {
         username,
@@ -21,11 +25,17 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
       .then((res) => {
         localStorage.setItem('authToken', res.data.token);
         setLoggedIn(true);
+        setLoginLoading(false);
+      })
+      .catch((res) => {
+        setError(res.error);
+        setLoginLoading(false);
       });
   };
 
   const handleDemo = (e: FormEvent) => {
     e.preventDefault();
+    setDemoLoading(true);
     axios
       .post('/login', {
         username: 'Jisoo',
@@ -34,7 +44,9 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
       .then((res) => {
         localStorage.setItem('authToken', res.data.token);
         setLoggedIn(true);
-      });
+        setDemoLoading(false);
+      })
+      .catch(() => setDemoLoading(false));
   };
 
   return (
@@ -65,22 +77,24 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
             onChange={(e) => setPassword((e.target as HTMLInputElement).value)}
           />
           <Button className="py-1.5" primary>
-            Login
+            {loginLoading ? 'Processing...' : 'Login'}
           </Button>
         </form>
         <br />
         <hr className="border-gray-300" />
         <br />
         <div className="mb-1 text-sm">Don&apos;t have an account?</div>
-        <Button className="text-secondary border border-secondary w-2/3 m-auto">
+        <Button className="hover:bg-gray-100 text-secondary border border-secondary w-2/3 m-auto">
           Sign Up
         </Button>
         <div className="my-0.5 text-sm">or</div>
         <Button
-          className="bg-green-400 w-2/3 m-auto"
+          className={`bg-green-400 hover:bg-green-500 w-2/3 m-auto ${
+            demoLoading && 'disabled'
+          }`}
           onClick={(e) => handleDemo(e)}
         >
-          Demo
+          {demoLoading ? 'Processing...' : 'Demo'}
         </Button>
       </div>
       <div>

@@ -17,8 +17,8 @@ const Button = ({
 }: IButtonProps) => {
   return (
     <button
-      className={` text-white rounded-lg py-1 px-2 font-semibold ${
-        primary && 'bg-secondary'
+      className={` text-white rounded-lg py-1 px-2 font-semibold transition duration-200 ${
+        primary && 'bg-primary hover:bg-secondary'
       } text-lg ${className}`}
       type={type}
       onClick={onClick}

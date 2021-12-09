@@ -41,7 +41,7 @@ const NewWorkoutForm = ({
           <option value="Saturday">Saturday</option>
         </>
       </Select>
-      <Button className="mx-auto"type="submit">Submit</Button>
+      <Button primary className="mx-auto"type="submit">Submit</Button>
     </form>
   );
 };

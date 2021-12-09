@@ -40,7 +40,7 @@ const AddWorkoutExerciseForm = ({
             </option>
           ))}
       </Select>
-      <Button className="mx-auto" type="submit">
+      <Button primary className="mx-auto" type="submit">
         Submit
       </Button>
     </form>

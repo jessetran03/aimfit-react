@@ -28,7 +28,7 @@ interface Exercise {
 // CLEAN UP FILTER/TYPES
 
 const WorkoutPage = () => {
-  const [exerciseId, setExerciseId] = useState<string>();
+  const [exerciseId, setExerciseId] = useState<string>('1');
   const { isOpen, setOpen, setClosed } = useModal();
   const { workoutId } = useParams();
   const { loading, error, data } = useQuery(WorkoutExercisesQuery, {
