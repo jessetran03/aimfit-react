@@ -79,6 +79,7 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
           <Button className="py-1.5" primary>
             {loginLoading ? 'Processing...' : 'Login'}
           </Button>
+          {error && <div className="text-red-300">{error}</div>}
         </form>
         <br />
         <hr className="border-gray-300" />
