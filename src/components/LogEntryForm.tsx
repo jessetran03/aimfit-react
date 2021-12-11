@@ -27,16 +27,19 @@ const LogEntry = ({
         autoFocus
         placeholder="Set Count"
         required
+        type="number"
         onChange={(e) => setSetCount(Number((e.target as HTMLInputElement).value))}
       />
       <Input
-        placeholder="Rept Count"
+        placeholder="Rep Count"
         required
+        type="number"
         onChange={(e) => setRepCount(Number((e.target as HTMLInputElement).value))}
       />
       <Input
         placeholder="Weight Count"
         required
+        type="number"
         onChange={(e) => setWeightCount(Number((e.target as HTMLInputElement).value))}
       />
       <Button className="mx-auto" type="submit">

@@ -23,8 +23,6 @@ const Workouts = () => {
   const [day, setDay] = useState<string>('Sunday');
   const { isOpen, setOpen, setClosed } = useModal();
 
-  console.log({ day });
-
   const [createWorkout] = useMutation(CreateWorkoutMutation, {
     variables: {
       input: { day, title },
