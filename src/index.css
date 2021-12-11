@@ -22,10 +22,6 @@ a:hover {
   color: #aaa;
 }
 
-.grid-top-bottom {
-  display: grid;
-  grid-template-rows: 60px calc(100vh - 60px);
-}
 .grid-left-right {
   display: grid;
   grid-template-columns: auto;
@@ -34,11 +30,11 @@ a:hover {
   width: 100vw;
 }
 .grid-left-right.top {
-  grid-template-columns: 200px auto;
+  grid-template-columns: 220px auto;
 }
 
 @media(min-width: 640px) {
   .grid-left-right {
-    grid-template-columns: 200px auto;
+    grid-template-columns: 220px auto;
   }
 }

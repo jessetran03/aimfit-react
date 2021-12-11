@@ -45,7 +45,7 @@ const ExerciseLog = () => {
           <LeftArrowIcon /> Go Back
         </button>
       </div>
-      <div>
+      <div className="z-0">
         <ExerciseLogTable
           exerciseName={data.exercise.name}
           data={data.exerciseLog}
