@@ -40,6 +40,7 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
   };
 
   const handleDemo = (e: FormEvent) => {
+    console.log({ DEMO_USERNAME, DEMO_PASSWORD });
     e.preventDefault();
     setDemoLoading(true);
     axios
