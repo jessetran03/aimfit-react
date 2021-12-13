@@ -11,6 +11,9 @@ interface Exercise {
 
 const Exercises = () => {
   const { loading, error, data } = useQuery(ExercisesQuery);
+  const exercises = data?.exercises
+    .slice()
+    .sort((a: Exercise, b: Exercise) => (a.name > b.name ? 1 : -1));
   if (loading) return <div>Loading</div>;
   if (error) return <div>Error!</div>;
   return (
@@ -19,7 +22,7 @@ const Exercises = () => {
         <Link to="/exercises">Exercises</Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        {data.exercises.map((exercise: Exercise) => (
+        {exercises.map((exercise: Exercise) => (
           <Link
             to={`/exercises/${exercise.id}`}
             key={exercise.id}

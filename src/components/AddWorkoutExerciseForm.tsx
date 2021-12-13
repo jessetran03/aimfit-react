@@ -20,6 +20,9 @@ const AddWorkoutExerciseForm = ({
   setExerciseId,
 }: IAddWorkoutExerciseFormProps) => {
   const { data } = useQuery(ExercisesQuery);
+  const exercises = data?.exercises
+    .slice()
+    .sort((a: Exercise, b: Exercise) => (a.name > b.name ? 1 : -1));
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -32,13 +35,11 @@ const AddWorkoutExerciseForm = ({
       <Select
         onChange={(e) => setExerciseId((e.target as HTMLSelectElement).value)}
       >
-        {data.exercises
-          // .sort((a: Exercise, b: Exercise) => (a.name > b.name ? -1 : 1))
-          .map((exercise: Exercise) => (
-            <option key={exercise.id} value={exercise.id}>
-              {exercise.name}
-            </option>
-          ))}
+        {exercises.map((exercise: Exercise) => (
+          <option key={exercise.id} value={exercise.id}>
+            {exercise.name}
+          </option>
+        ))}
       </Select>
       <Button primary className="mx-auto" type="submit">
         Submit

@@ -59,7 +59,7 @@ const WorkoutPage = () => {
         {workoutExercises.map((workoutExercise: WorkoutExercise) => (
           <Link
             to={`/exercises/${workoutExercise.exercise.id}`}
-            key={workoutExercise.exercise.id}
+            key={workoutExercise.id}
             className="h-24 border-2 p-5 text-2xl flex justify-center items-center m-3"
           >
             {workoutExercise.exercise.name}

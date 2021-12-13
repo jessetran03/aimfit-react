@@ -1,13 +1,18 @@
 import { Dispatch, SetStateAction, FormEvent, useState } from 'react';
 import axios from 'axios';
+import Signup from '../components/Signup';
+import Modal from '../components/Modal';
+import useModal from '../hooks/useModal';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import { DEMO_USERNAME, DEMO_PASSWORD } from '../config';
 
 interface ILoginProps {
   setLoggedIn: Dispatch<SetStateAction<boolean>>;
 }
 
 const Login = ({ setLoggedIn }: ILoginProps) => {
+  const { isOpen, setOpen, setClosed } = useModal();
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState(null);
@@ -16,6 +21,7 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    console.log({ username, password });
     setLoginLoading(true);
     axios
       .post('/login', {
@@ -23,9 +29,9 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
         password,
       })
       .then((res) => {
+        setLoginLoading(false);
         localStorage.setItem('authToken', res.data.token);
         setLoggedIn(true);
-        setLoginLoading(false);
       })
       .catch((res) => {
         setError(res.error);
@@ -38,13 +44,13 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
     setDemoLoading(true);
     axios
       .post('/login', {
-        username: 'Jisoo',
-        password: 'Jisoo',
+        username: DEMO_USERNAME,
+        password: DEMO_PASSWORD,
       })
       .then((res) => {
+        setDemoLoading(false);
         localStorage.setItem('authToken', res.data.token);
         setLoggedIn(true);
-        setDemoLoading(false);
       })
       .catch(() => setDemoLoading(false));
   };
@@ -85,7 +91,10 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
         <hr className="border-gray-300" />
         <br />
         <div className="mb-1 text-sm">Don&apos;t have an account?</div>
-        <Button className="hover:bg-gray-100 text-secondary border border-secondary w-2/3 m-auto">
+        <Button
+          className="hover:bg-gray-100 text-secondary border border-secondary w-2/3 m-auto"
+          onClick={() => setOpen()}
+        >
           Sign Up
         </Button>
         <div className="my-0.5 text-sm">or</div>
@@ -101,6 +110,9 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
       <div>
         <strong>Aim</strong> to be <strong>Fit</strong>. Begin your journey.
       </div>
+      <Modal isOpen={isOpen} setClosed={setClosed}>
+        <Signup setClosed={setClosed} />
+      </Modal>
     </div>
   );
 };

@@ -32,12 +32,25 @@ const Nav = () => {
           className="fixed flex flex-col top-16 w-screen text-lg font-semibold"
           onClick={() => setOpen(false)}
         >
-          <Link className="bg-gray-100 w-full text-center p-4 border" to="/workouts">
+          <Link
+            className="bg-gray-100 w-full text-center p-4 border"
+            to="/workouts"
+          >
             Workouts
           </Link>
-          <Link className="bg-gray-100 w-full text-center p-4 border" to="/exercises">
+          <Link
+            className="bg-gray-100 w-full text-center p-4 border"
+            to="/exercises"
+          >
             Exercises
           </Link>
+          <a
+            className="bg-gray-100 w-full text-center p-4 border"
+            href="/"
+            onClick={() => localStorage.clear()}
+          >
+            Sign Out
+          </a>
         </div>
       )}
     </>

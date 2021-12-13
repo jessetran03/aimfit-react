@@ -28,21 +28,27 @@ const LogEntry = ({
         placeholder="Set Count"
         required
         type="number"
-        onChange={(e) => setSetCount(Number((e.target as HTMLInputElement).value))}
+        onChange={(e) =>
+          setSetCount(Number((e.target as HTMLInputElement).value))
+        }
       />
       <Input
         placeholder="Rep Count"
         required
         type="number"
-        onChange={(e) => setRepCount(Number((e.target as HTMLInputElement).value))}
+        onChange={(e) =>
+          setRepCount(Number((e.target as HTMLInputElement).value))
+        }
       />
       <Input
         placeholder="Weight Count"
         required
         type="number"
-        onChange={(e) => setWeightCount(Number((e.target as HTMLInputElement).value))}
+        onChange={(e) =>
+          setWeightCount(Number((e.target as HTMLInputElement).value))
+        }
       />
-      <Button className="mx-auto" type="submit">
+      <Button primary className="mx-auto" type="submit">
         Submit
       </Button>
     </form>
