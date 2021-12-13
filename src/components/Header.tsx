@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <Link
       to="/"
-      className={`flex justify-center items-center space-x-2 animation-none`}
+      className="flex justify-start px-4 sm:p-0 sm:justify-center items-center space-x-2 animation-none"
     >
       <img
         src="/aimfit-icon.png"

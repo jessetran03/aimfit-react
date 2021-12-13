@@ -50,7 +50,7 @@ const Signup = ({ setClosed }: ISignupProps) => {
   });
 
   return (
-    <div className="w-96">
+    <div className="w-80 sm:w-96">
       <div className="flex-row flex justify-center mb-6">
         <div className="text-3xl">Sign Up</div>
       </div>
@@ -72,7 +72,7 @@ const Signup = ({ setClosed }: ISignupProps) => {
               </div>
             )}
           </div>
-          <div className="flex-col">
+          <div className="flex-col w-1/2">
             <Input
               className="py-1.5 px-3 w-full"
               id="lastName"

@@ -7,8 +7,8 @@ import Sidebar from './Sidebar';
 const Layout: FC = () => {
   return (
     <div className="">
-      <div className="fixed h-16 bg-gray-100 shadow w-screen z-10">
-        <div className=" grid-left-right h-full top">
+      <div className="fixed h-16 shadow-md w-screen bg-white z-10">
+        <div className="grid-left-right h-full top">
           <Header />
           <Nav />
         </div>

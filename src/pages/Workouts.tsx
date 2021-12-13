@@ -17,11 +17,26 @@ interface Workout {
   day: string;
 }
 
+const weekdays = [
+  'Sunday',
+  'Monday',
+  'Tueday',
+  'Wednesday',
+  'Thrusday',
+  'Friday',
+  'Saturday',
+];
+
 const Workouts = () => {
-  const { loading, error, data } = useQuery(WorkoutsQuery);
   const [title, setTitle] = useState<string>();
   const [day, setDay] = useState<string>('Sunday');
   const { isOpen, setOpen, setClosed } = useModal();
+  const { loading, error, data } = useQuery(WorkoutsQuery);
+  const workouts = data
+    ? [...data.workouts].sort((a: Workout, b: Workout) =>
+        weekdays.indexOf(a.day) > weekdays.indexOf(b.day) ? 1 : -1,
+      )
+    : [];
 
   const [createWorkout] = useMutation(CreateWorkoutMutation, {
     variables: {
@@ -43,7 +58,7 @@ const Workouts = () => {
         <Link to="/workouts">Workouts</Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.workouts.map((workout: Workout) => (
+        {workouts.map((workout: Workout) => (
           <Link
             to={`${workout.id}`}
             key={workout.id}
