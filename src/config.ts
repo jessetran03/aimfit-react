@@ -5,5 +5,3 @@ export const API_BASE_URI =
 
 export const DEMO_USERNAME = process.env.REACT_APP_DEMO_USERNAME;
 export const DEMO_PASSWORD = process.env.REACT_APP_DEMO_PASSWORD;
-
-console.log({ DEMO_USERNAME, DEMO_PASSWORD });

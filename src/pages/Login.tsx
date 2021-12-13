@@ -21,7 +21,6 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log({ username, password });
     setLoginLoading(true);
     axios
       .post('/login', {
@@ -40,7 +39,6 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
   };
 
   const handleDemo = (e: FormEvent) => {
-    console.log({ DEMO_USERNAME, DEMO_PASSWORD });
     e.preventDefault();
     setDemoLoading(true);
     axios
