@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 interface IButtonProps {
-  children?: string;
+  children?: string | ReactNode;
   className?: string;
   primary?: boolean;
   type?: 'button' | 'submit' | 'reset' | undefined;

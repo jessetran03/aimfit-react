@@ -5,6 +5,7 @@ import Modal from '../components/Modal';
 import useModal from '../hooks/useModal';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import { LoadingIcon } from '../utils/icons';
 import { DEMO_USERNAME, DEMO_PASSWORD } from '../config';
 
 interface ILoginProps {
@@ -21,6 +22,7 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
     setLoginLoading(true);
     axios
       .post('/login', {
@@ -32,14 +34,18 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
         localStorage.setItem('authToken', res.data.token);
         setLoggedIn(true);
       })
-      .catch((res) => {
-        setError(res.error);
+      .catch((err) => {
+        setError(
+          err?.response?.data?.error ||
+            'Cannot log in to your account at this time',
+        );
         setLoginLoading(false);
       });
   };
 
   const handleDemo = (e: FormEvent) => {
     e.preventDefault();
+    setError(null);
     setDemoLoading(true);
     axios
       .post('/login', {
@@ -82,9 +88,9 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
             onChange={(e) => setPassword((e.target as HTMLInputElement).value)}
           />
           <Button className="py-1.5" primary>
-            {loginLoading ? 'Processing...' : 'Login'}
+            {loginLoading ? <LoadingIcon /> : 'Login'}
           </Button>
-          {error && <div className="text-red-300">{error}</div>}
+          {error && <div className="text-red-500 text-sm mt-3">{error}</div>}
         </form>
         <br />
         <hr className="border-gray-300" />
@@ -92,7 +98,10 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
         <div className="mb-1 text-sm">Don&apos;t have an account?</div>
         <Button
           className="hover:bg-gray-100 text-secondary border border-secondary w-2/3 m-auto"
-          onClick={() => setOpen()}
+          onClick={() => {
+            setError(null);
+            setOpen();
+          }}
         >
           Sign Up
         </Button>
@@ -103,7 +112,7 @@ const Login = ({ setLoggedIn }: ILoginProps) => {
           }`}
           onClick={(e) => handleDemo(e)}
         >
-          {demoLoading ? 'Processing...' : 'Demo'}
+          {demoLoading ? <LoadingIcon /> : 'Demo'}
         </Button>
       </div>
       <div>

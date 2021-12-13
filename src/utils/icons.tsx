@@ -13,6 +13,9 @@ export const CloseIcon = ({ className }: IProps) => {
 export const LeftArrowIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="arrow-left" />;
 };
+export const LoadingIcon = ({ className }: IProps) => {
+  return <FontAwesomeIcon className={className} icon="spinner" spin />;
+};
 export const RightIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="chevron-right" />;
 };
