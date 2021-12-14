@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { PlusIcon } from '../utils/icons';
 import { useQuery } from '@apollo/client';
 import { ExercisesQuery } from '../apollo';
+import Loading from '../components/Loading';
 
 interface Exercise {
   id: number;
@@ -14,7 +15,7 @@ const Exercises = () => {
   const exercises = data?.exercises
     .slice()
     .sort((a: Exercise, b: Exercise) => (a.name > b.name ? 1 : -1));
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
   if (error) return <div>Error!</div>;
   return (
     <>

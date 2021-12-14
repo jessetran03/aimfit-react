@@ -16,6 +16,9 @@ export const LeftArrowIcon = ({ className }: IProps) => {
 export const LoadingIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="spinner" spin />;
 };
+export const OptionsIcon = ({ className }: IProps) => {
+  return <FontAwesomeIcon className={className} icon="ellipsis-v" />;
+};
 export const RightIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="chevron-right" />;
 };

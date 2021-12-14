@@ -1,8 +1,8 @@
 import { FormEvent } from 'react';
-import Button from './Button';
-import Select from './Select';
+import Button from '../Button';
+import Select from '../Select';
 import { useQuery } from '@apollo/client';
-import { ExercisesQuery } from '../apollo';
+import { ExercisesQuery } from '../../apollo';
 
 interface IAddWorkoutExerciseFormProps {
   onSubmit: () => void;

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { PlusIcon } from '../utils/icons';
+import { PlusIcon, OptionsIcon } from '../utils/icons';
 import { useQuery, useMutation } from '@apollo/client';
 import {
   WorkoutsQuery,
@@ -8,8 +8,9 @@ import {
   DeleteWorkoutMutation,
 } from '../apollo';
 import Modal from '../components/Modal';
-import NewWorkoutForm from '../components/NewWorkoutForm';
+import NewWorkoutForm from '../components/forms/NewWorkoutForm';
 import useModal from '../hooks/useModal';
+import Loading from '../components/Loading';
 
 interface Workout {
   id: number;
@@ -50,7 +51,7 @@ const Workouts = () => {
     refetchQueries: [WorkoutsQuery],
   });
 
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
   if (error) return <div>Error!</div>;
   return (
     <>
@@ -62,19 +63,24 @@ const Workouts = () => {
           <Link
             to={`${workout.id}`}
             key={workout.id}
-            className="h-32 rounded-lg border-2 p-5 text-2xl flex flex-col justify-center items-center m-3"
+            className="h-32 rounded-lg border-2 p-5 text-2xl flex flex-row justify-between items-center m-3"
           >
-            <h2>{workout.title}</h2>
-            <h3 className="text-base">{workout.day}</h3>
-            <button
-              className="text-sm text-white border mt-2 rounded-xl p-1 bg-gray-400"
-              onClick={(e) => {
-                e.preventDefault();
-                deleteWorkout({ variables: { id: workout.id } });
-              }}
-            >
-              Delete
-            </button>
+            <div className="flex flex-col">
+              <h2>{workout.title}</h2>
+              <h3 className="text-base">{workout.day}</h3>
+            </div>
+            <div className="flex flex-col">
+              <OptionsIcon />
+              <button
+                className="text-sm text-white border mt-2 rounded-xl p-1 bg-gray-400"
+                onClick={(e) => {
+                  e.preventDefault();
+                  deleteWorkout({ variables: { id: workout.id } });
+                }}
+              >
+                Delete
+              </button>
+            </div>
           </Link>
         ))}
         <button

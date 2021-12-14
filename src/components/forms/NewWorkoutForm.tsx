@@ -1,7 +1,7 @@
 import { FormEvent } from 'react';
-import Input from './Input';
-import Button from './Button';
-import Select from './Select';
+import Input from '../Input';
+import Button from '../Button';
+import Select from '../Select';
 
 interface INewWorkoutFormProps {
   day: string;
@@ -16,7 +16,6 @@ const NewWorkoutForm = ({
   setDay,
   setTitle,
 }: INewWorkoutFormProps) => {
-
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
@@ -30,7 +29,11 @@ const NewWorkoutForm = ({
         required
         onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
       />
-      <Select value={day} onChange={(e) => setDay((e.target as HTMLSelectElement).value)}>
+      <Select
+        className="mt-2"
+        value={day}
+        onChange={(e) => setDay((e.target as HTMLSelectElement).value)}
+      >
         <>
           <option value="Sunday">Sunday</option>
           <option value="Monday">Monday</option>
@@ -41,7 +44,9 @@ const NewWorkoutForm = ({
           <option value="Saturday">Saturday</option>
         </>
       </Select>
-      <Button primary className="mx-auto"type="submit">Submit</Button>
+      <Button primary className="mx-auto" type="submit">
+        Submit
+      </Button>
     </form>
   );
 };

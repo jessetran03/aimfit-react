@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import Axios from "axios";
+import Axios from 'axios';
 import { API_BASE_URI } from './config';
 import Home from './pages/Home';
 import Workouts from './pages/Workouts';
-import WorkoutPage from './pages/WorkoutPage';
+import WorkoutPage from './pages/WorkoutExercises';
 import Exercises from './pages/Exercises';
 import ExerciseLog from './pages/ExerciseLog';
 import NotFound from './pages/NotFound';

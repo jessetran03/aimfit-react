@@ -3,8 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import { PlusIcon, RightIcon } from '../utils/icons';
 import { useQuery, useMutation } from '@apollo/client';
 import { WorkoutExercisesQuery, AddWorkoutExerciseMutation } from '../apollo';
+import Loading from '../components/Loading';
 import Modal from '../components/Modal';
-import AddWorkoutExerciseForm from '../components/AddWorkoutExerciseForm';
+import AddWorkoutExerciseForm from '../components/forms/AddWorkoutExerciseForm';
 import useModal from '../hooks/useModal';
 
 interface WorkoutExercise {
@@ -47,7 +48,7 @@ const WorkoutPage = () => {
     (workoutExercise: WorkoutExercise) =>
       workoutExercise.workout.id === workoutId,
   );
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
   if (error) return <div>Error!</div>;
   return (
     <>

@@ -1,6 +1,6 @@
 import { FormEvent } from 'react';
-import Input from './Input';
-import Button from './Button';
+import Input from '../Input';
+import Button from '../Button';
 // import Select from './Select';
 
 interface ILogEntryProps {

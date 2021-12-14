@@ -2,13 +2,14 @@ import { useState } from 'react';
 // import { Link, useParams } from 'react-router-dom';
 // import { PlusIcon, RightIcon } from '../utils/icons';
 import { useParams } from 'react-router-dom';
-import { PlusIcon, LeftArrowIcon } from '../utils/icons';
+import { PlusIcon, LeftArrowIcon } from '../../utils/icons';
 import { useQuery, useMutation } from '@apollo/client';
-import { ExerciseLogQuery, AddLogEntryMutation } from '../apollo';
-import Modal from '../components/Modal';
-import useModal from '../hooks/useModal';
-import LogEntryForm from '../components/LogEntryForm';
-import ExerciseLogTable from '../components/ExerciseLogTable';
+import { ExerciseLogQuery, AddLogEntryMutation } from '../../apollo';
+import Modal from '../../components/Modal';
+import useModal from '../../hooks/useModal';
+import LogEntryForm from '../../components/forms/LogEntryForm';
+import ExerciseLogTable from './ExerciseLogTable';
+import Loading from '../../components/Loading';
 
 const ExerciseLog = () => {
   const { exerciseId } = useParams();
@@ -30,9 +31,8 @@ const ExerciseLog = () => {
     onCompleted: setClosed,
   });
 
-  if (loading) return <div>Loading</div>;
+  if (loading) return <Loading />;
   if (error) return <div>Error!</div>;
-  if (!data) return null;
   return (
     <>
       <div className="font-semibold mb-2">
@@ -48,7 +48,7 @@ const ExerciseLog = () => {
       <div className="z-0">
         <ExerciseLogTable
           exerciseName={data.exercise.name}
-          data={data.exerciseLog}
+          data={data?.exerciseLog || []}
         />
       </div>
       <div className="flex flex-wrap">
