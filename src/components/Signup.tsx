@@ -38,9 +38,7 @@ const Signup = ({ setClosed }: ISignupProps) => {
     validationSchema: SignupSchema,
     onSubmit: (values) => {
       createUser({
-        variables: {
-          input: { ...values },
-        },
+        variables: values,
       });
     },
   });

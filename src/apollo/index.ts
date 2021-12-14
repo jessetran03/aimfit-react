@@ -11,3 +11,4 @@ export { AddWorkoutExerciseMutation } from './mutations/addWorkoutExercise';
 export { CreateUserMutation } from './mutations/createUser';
 export { CreateWorkoutMutation } from './mutations/createWorkout';
 export { DeleteWorkoutMutation } from './mutations/deleteWorkout';
+export { UpdateWorkoutMutation } from './mutations/updateWorkout';

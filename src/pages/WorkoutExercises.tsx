@@ -33,14 +33,10 @@ const WorkoutPage = () => {
   const { isOpen, setOpen, setClosed } = useModal();
   const { workoutId } = useParams();
   const { loading, error, data } = useQuery(WorkoutExercisesQuery, {
-    variables: {
-      id: workoutId,
-    },
+    variables: { id: workoutId },
   });
   const [addWorkoutExercise] = useMutation(AddWorkoutExerciseMutation, {
-    variables: {
-      input: { workoutId, exerciseId },
-    },
+    variables: { workoutId, exerciseId },
     refetchQueries: [WorkoutExercisesQuery],
     onCompleted: setClosed,
   });

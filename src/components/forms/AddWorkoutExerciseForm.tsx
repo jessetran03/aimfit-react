@@ -20,15 +20,15 @@ const AddWorkoutExerciseForm = ({
   setExerciseId,
 }: IAddWorkoutExerciseFormProps) => {
   const { data } = useQuery(ExercisesQuery);
-  const exercises = data?.exercises
-    .slice()
-    .sort((a: Exercise, b: Exercise) => (a.name > b.name ? 1 : -1));
+  const exercises =
+    data?.exercises
+      .slice()
+      .sort((a: Exercise, b: Exercise) => (a.name > b.name ? 1 : -1)) || [];
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     onSubmit();
   };
-  if (!data) return null;
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
       <h2 className="text-lg mb-2 text-center">Add Exercise to Workout</h2>

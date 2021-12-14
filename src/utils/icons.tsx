@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IProps {
   className?: string;
+  onClick?: () => void;
 }
 
 export const BarsIcon = ({ className }: IProps) => {
@@ -16,8 +17,14 @@ export const LeftArrowIcon = ({ className }: IProps) => {
 export const LoadingIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="spinner" spin />;
 };
-export const OptionsIcon = ({ className }: IProps) => {
-  return <FontAwesomeIcon className={className} icon="ellipsis-v" />;
+export const OptionsIcon = ({ className, onClick }: IProps) => {
+  return (
+    <FontAwesomeIcon
+      className={className}
+      icon="ellipsis-v"
+      onClick={onClick}
+    />
+  );
 };
 export const RightIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="chevron-right" />;

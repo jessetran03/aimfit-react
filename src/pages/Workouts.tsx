@@ -1,12 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PlusIcon, OptionsIcon } from '../utils/icons';
-import { useQuery, useMutation } from '@apollo/client';
-import {
-  WorkoutsQuery,
-  CreateWorkoutMutation,
-  DeleteWorkoutMutation,
-} from '../apollo';
+import { useQuery } from '@apollo/client';
+import { WorkoutsQuery } from '../apollo';
 import Modal from '../components/Modal';
 import NewWorkoutForm from '../components/forms/NewWorkoutForm';
 import useModal from '../hooks/useModal';
@@ -21,15 +17,15 @@ interface Workout {
 const weekdays = [
   'Sunday',
   'Monday',
-  'Tueday',
+  'Tuesday',
   'Wednesday',
-  'Thrusday',
+  'Thursday',
   'Friday',
   'Saturday',
 ];
 
 const Workouts = () => {
-  const [title, setTitle] = useState<string>();
+  const [title, setTitle] = useState<string>('');
   const [day, setDay] = useState<string>('Sunday');
   const { isOpen, setOpen, setClosed } = useModal();
   const { loading, error, data } = useQuery(WorkoutsQuery);
@@ -38,19 +34,13 @@ const Workouts = () => {
         weekdays.indexOf(a.day) > weekdays.indexOf(b.day) ? 1 : -1,
       )
     : [];
-
-  const [createWorkout] = useMutation(CreateWorkoutMutation, {
-    variables: {
-      input: { day, title },
-    },
-    refetchQueries: [WorkoutsQuery],
-    onCompleted: setClosed,
-  });
-
-  const [deleteWorkout] = useMutation(DeleteWorkoutMutation, {
-    refetchQueries: [WorkoutsQuery],
-  });
-
+  const [workoutId, setWorkoutId] = useState<number | null>(null);
+  const handleClose = () => {
+    setClosed();
+    setWorkoutId(null);
+    setTitle('');
+    setDay('Sunday');
+  };
   if (loading) return <Loading />;
   if (error) return <div>Error!</div>;
   return (
@@ -70,15 +60,16 @@ const Workouts = () => {
               <h3 className="text-base">{workout.day}</h3>
             </div>
             <div className="flex flex-col">
-              <OptionsIcon />
               <button
-                className="text-sm text-white border mt-2 rounded-xl p-1 bg-gray-400"
                 onClick={(e) => {
                   e.preventDefault();
-                  deleteWorkout({ variables: { id: workout.id } });
+                  setOpen();
+                  setWorkoutId(workout.id);
+                  setDay(workout.day);
+                  setTitle(workout.title);
                 }}
               >
-                Delete
+                <OptionsIcon />
               </button>
             </div>
           </Link>
@@ -88,19 +79,20 @@ const Workouts = () => {
           onClick={(e) => {
             e.preventDefault();
             setOpen();
-            setDay('Sunday');
           }}
         >
           <div className="border p-2 border border-gray-500 rounded-xl">
-            CREATE NEW <PlusIcon className="text-gray-500" />
+            CREATE NEW <PlusIcon className="text-green-500" />
           </div>
         </button>
-        <Modal isOpen={isOpen} setClosed={setClosed}>
+        <Modal isOpen={isOpen} setClosed={handleClose}>
           <NewWorkoutForm
-            onSubmit={() => createWorkout()}
-            setTitle={setTitle}
-            setDay={setDay}
             day={day}
+            title={title}
+            setClosed={handleClose}
+            setDay={setDay}
+            setTitle={setTitle}
+            workoutId={workoutId}
           />
         </Modal>
       </div>

@@ -12,9 +12,10 @@ interface Exercise {
 
 const Exercises = () => {
   const { loading, error, data } = useQuery(ExercisesQuery);
-  const exercises = data?.exercises
-    .slice()
-    .sort((a: Exercise, b: Exercise) => (a.name > b.name ? 1 : -1));
+  const exercises =
+    data?.exercises
+      .slice()
+      .sort((a: Exercise, b: Exercise) => (a.name > b.name ? 1 : -1)) || [];
   if (loading) return <Loading />;
   if (error) return <div>Error!</div>;
   return (

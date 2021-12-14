@@ -24,9 +24,7 @@ const ExerciseLog = () => {
   const { isOpen, setOpen, setClosed } = useModal();
 
   const [addLogEntry] = useMutation(AddLogEntryMutation, {
-    variables: {
-      input: { exerciseId, setCount, repCount, weightCount },
-    },
+    variables: { exerciseId, setCount, repCount, weightCount },
     refetchQueries: [ExerciseLogQuery],
     onCompleted: setClosed,
   });

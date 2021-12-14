@@ -20,12 +20,12 @@ const Select = ({
   return (
     <select
       autoFocus={autoFocus}
-      className={`${className} border border-gray-400 rounded mb-2 px-2 py-1.5`}
+      className={`${className} border border-gray-400 rounded mb-2 px-2 py-1.5 cursor-pointer`}
       required={required}
       onChange={onChange}
       value={value}
     >
-    {children}
+      {children}
     </select>
   );
 };

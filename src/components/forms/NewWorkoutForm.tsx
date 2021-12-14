@@ -1,25 +1,53 @@
-import { FormEvent } from 'react';
+import { FormEvent, Dispatch, SetStateAction } from 'react';
 import Input from '../Input';
 import Button from '../Button';
 import Select from '../Select';
+import {
+  WorkoutsQuery,
+  CreateWorkoutMutation,
+  DeleteWorkoutMutation,
+  UpdateWorkoutMutation,
+} from '../../apollo';
+import { useMutation } from '@apollo/client';
 
 interface INewWorkoutFormProps {
   day: string;
-  onSubmit: () => void;
-  setDay: (day: string) => void;
-  setTitle: (title: string) => void;
+  title: string;
+  workoutId?: number | null;
+  setClosed: () => void;
+  setDay: Dispatch<SetStateAction<string>>;
+  setTitle: Dispatch<SetStateAction<string>>;
 }
 
 const NewWorkoutForm = ({
   day,
-  onSubmit,
+  title,
+  workoutId,
+  setClosed,
   setDay,
   setTitle,
 }: INewWorkoutFormProps) => {
+  const [createWorkout] = useMutation(CreateWorkoutMutation, {
+    variables: { title, day },
+    refetchQueries: [WorkoutsQuery],
+    onCompleted: setClosed,
+  });
+  const [editWorkout] = useMutation(UpdateWorkoutMutation, {
+    variables: { id: workoutId, title, day },
+    refetchQueries: [WorkoutsQuery],
+    onCompleted: setClosed,
+  });
+  const [deleteWorkout] = useMutation(DeleteWorkoutMutation, {
+    variables: { id: workoutId },
+    refetchQueries: [WorkoutsQuery],
+    onCompleted: setClosed,
+  });
+
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    onSubmit();
+    workoutId ? editWorkout() : createWorkout();
   };
+
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
       <h2 className="text-lg mb-2 text-center">Add Workout</h2>
@@ -27,6 +55,7 @@ const NewWorkoutForm = ({
         autoFocus
         placeholder="Workout Name"
         required
+        value={title}
         onChange={(e) => setTitle((e.target as HTMLInputElement).value)}
       />
       <Select
@@ -44,9 +73,21 @@ const NewWorkoutForm = ({
           <option value="Saturday">Saturday</option>
         </>
       </Select>
-      <Button primary className="mx-auto" type="submit">
-        Submit
-      </Button>
+      <div className="flex flex-row justify-between mt-3 space-x-3">
+        {workoutId && (
+          <Button
+            className="bg-red-500 w-full"
+            type="button"
+            onClick={() => deleteWorkout()}
+          >
+            Delete
+          </Button>
+        )}
+
+        <Button primary className="w-full" type="submit">
+          Submit
+        </Button>
+      </div>
     </form>
   );
 };
