@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface IProps {
   className?: string;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler<SVGSVGElement>;
 }
 
 export const BarsIcon = ({ className }: IProps) => {
@@ -16,6 +16,15 @@ export const LeftArrowIcon = ({ className }: IProps) => {
 };
 export const LoadingIcon = ({ className }: IProps) => {
   return <FontAwesomeIcon className={className} icon="spinner" spin />;
+};
+export const MinusIcon = ({ className, onClick }: IProps) => {
+  return (
+    <FontAwesomeIcon
+      className={className}
+      icon="minus-circle"
+      onClick={onClick}
+    />
+  );
 };
 export const OptionsIcon = ({ className, onClick }: IProps) => {
   return (

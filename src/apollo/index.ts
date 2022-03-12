@@ -8,6 +8,7 @@ export { WorkoutsQuery } from './queries/workouts';
 // Mutations
 export { AddLogEntryMutation } from './mutations/addLogEntry';
 export { AddWorkoutExerciseMutation } from './mutations/addWorkoutExercise';
+export { CreateExerciseMutation } from './mutations/createExercise';
 export { CreateUserMutation } from './mutations/createUser';
 export { CreateWorkoutMutation } from './mutations/createWorkout';
 export { DeleteWorkoutMutation } from './mutations/deleteWorkout';

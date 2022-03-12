@@ -50,7 +50,7 @@ const NewWorkoutForm = ({
 
   return (
     <form className="flex flex-col" onSubmit={(e) => handleSubmit(e)}>
-      <h2 className="text-lg mb-2 text-center">Add Workout</h2>
+      <h2 className="text-lg mb-2 text-center">{workoutId ? 'Edit Workout' : 'Add Workout'}</h2>
       <Input
         autoFocus
         placeholder="Workout Name"

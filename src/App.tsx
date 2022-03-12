@@ -10,6 +10,7 @@ import ExerciseLog from './pages/ExerciseLog';
 import NotFound from './pages/NotFound';
 import Login from './pages/Login';
 import Layout from './components/Layout';
+import ScrollToTop from './utils/ScrollToTop';
 
 const App = () => {
   Axios.defaults.baseURL = API_BASE_URI;
@@ -20,16 +21,18 @@ const App = () => {
     return <Login setLoggedIn={setLoggedIn} />;
   }
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="workouts" element={<Workouts />} />
-        <Route path="workouts/:workoutId" element={<WorkoutPage />} />
-        <Route path="exercises" element={<Exercises />} />
-        <Route path="exercises/:exerciseId" element={<ExerciseLog />} />
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+    <ScrollToTop>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="workouts" element={<Workouts />} />
+          <Route path="workouts/:workoutId" element={<WorkoutPage />} />
+          <Route path="exercises" element={<Exercises />} />
+          <Route path="exercises/:exerciseId" element={<ExerciseLog />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </ScrollToTop>
   );
 };
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { PlusIcon, RightIcon } from '../utils/icons';
+import { MinusIcon, PlusIcon, RightIcon } from '../utils/icons';
 import { useQuery, useMutation } from '@apollo/client';
 import { WorkoutExercisesQuery, AddWorkoutExerciseMutation } from '../apollo';
 import Loading from '../components/Loading';
@@ -57,9 +57,19 @@ const WorkoutPage = () => {
           <Link
             to={`/exercises/${workoutExercise.exercise.id}`}
             key={workoutExercise.id}
-            className="h-24 border-2 p-5 text-2xl flex justify-center items-center m-3"
+            className="h-16 border-2 p-5 text-2xl flex justify-center items-center m-3"
           >
-            {workoutExercise.exercise.name}
+            <div className="flex flex-row justify-between w-full items-center">
+              <div>{workoutExercise.exercise.name}</div>
+              <MinusIcon
+                className=""
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  alert('Removed');
+                }}
+              />
+            </div>
           </Link>
         ))}
         <button
